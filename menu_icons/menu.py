@@ -24,7 +24,7 @@ class MenuIconsMod(Modifier):
                     # Here lies a bolognapants McGee workaround due
                     # to the double publishing feature added in 2.4.
                     menu_icons = MenuIcon.objects.get(page=(node.id-1))
-                if __version__=="3.0.0.beta2":
+                else:
                     menu_icons = MenuIcon.objects.get(page=(node.id))
                 node.menu_icon_image = menu_icons.menu_icon_image
                 node.menu_icon_url = menu_icons.menu_icon_url
