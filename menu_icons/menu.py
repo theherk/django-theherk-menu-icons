@@ -1,7 +1,8 @@
+from cms import __version__
+
 from menus.base import Modifier
 from menus.menu_pool import menu_pool
 from menu_icons.models import MenuIcon
-
 
 class MenuIconsMod(Modifier):
     """
@@ -18,9 +19,13 @@ class MenuIconsMod(Modifier):
         for node in nodes:
             try:
                 # Load Menu Icons into template tags
-                # Here lies a bolognapants McGee workaround due
-                # to the double publishing feature added in 2.4.
-                menu_icons = MenuIcon.objects.get(page=(node.id-1))
+                if __version__=="2.4":  # not sure, you will have to put your version here !
+                    # Load Menu Icons into template tags
+                    # Here lies a bolognapants McGee workaround due
+                    # to the double publishing feature added in 2.4.
+                    menu_icons = MenuIcon.objects.get(page=(node.id-1))
+                else:
+                    menu_icons = MenuIcon.objects.get(page=(node.id))
                 node.menu_icon_image = menu_icons.menu_icon_image
                 node.menu_icon_url = menu_icons.menu_icon_url
                 node.menu_icon_font_awesome = menu_icons.menu_icon_font_awesome
