@@ -3,6 +3,8 @@ from cms import __version__
 from menus.base import Modifier
 from menus.menu_pool import menu_pool
 from menu_icons.models import MenuIcon
+from cms.models.pagemodel import Page
+
 
 class MenuIconsMod(Modifier):
     """
@@ -19,11 +21,14 @@ class MenuIconsMod(Modifier):
         for node in nodes:
             try:
                 # Load Menu Icons into template tags
-                if __version__=="2.4":  # not sure, you will have to put your version here !
+                if __version__ >= "2.4" and __version__ < "3":  # tested with django-cms at version 2.4.3
                     # Load Menu Icons into template tags
-                    # Here lies a bolognapants McGee workaround due
-                    # to the double publishing feature added in 2.4.
-                    menu_icons = MenuIcon.objects.get(page=(node.id-1))
+                    # Workaround due to the double publishing feature added in 2.4.
+                    # menu icons refers to page marked as "publisher_is_draft"
+                    
+                    node_page = Page.objects.get( id = node.id )
+                    draft_page_id = node_page.id if node_page.publisher_is_draft else node_page.publisher_public_id
+                    menu_icons = MenuIcon.objects.get( page = draft_page_id )
                 else:
                     menu_icons = MenuIcon.objects.get(page=(node.id))
                 node.menu_icon_image = menu_icons.menu_icon_image
