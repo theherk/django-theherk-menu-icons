@@ -17,4 +17,5 @@ Usage
 
 2. Run `python manage.py migrate menu_icons`.
 
-   Alternately, you could `syncdb` and `migrate --fake`
+**note** - This assumes you are using `south`. If you aren't you can just use `syncdb`.
+
