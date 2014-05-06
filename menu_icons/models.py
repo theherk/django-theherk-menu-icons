@@ -1,16 +1,15 @@
 from django.db import models
-from cms.models.pagemodel import Page
+from cms.extensions import PageExtension
+from cms.extensions.extension_pool import extension_pool
 
 
-class MenuIcon(models.Model):
+class MenuIcon(PageExtension):
     """
     Defines Menu Icon fields
     """
-    page = models.OneToOneField(Page)
     menu_icon_font_awesome = models.CharField(
         max_length=48,
         verbose_name="Menu Icon Font Awesome",
-        default="icon-",
         blank=True,
         null=True
     )
@@ -25,3 +24,6 @@ class MenuIcon(models.Model):
         blank=True,
         null=True
     )
+
+extension_pool.register(MenuIcon)
+
