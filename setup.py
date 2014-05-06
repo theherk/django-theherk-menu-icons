@@ -17,7 +17,7 @@ setup(
     description='Django CMS navigation modifier to attach icons to menus.',
     long_description=read('README.md'),
     url='https://github.com/theherk/django-theherk-menu-icons',
-    download_url='https://github.com/theherk/django-theherk-menu-icons/archive/1.3.zip',
+    download_url='https://github.com/theherk/django-theherk-menu-icons/archive/v1.3.zip',
     author='Adam Sherwood',
     author_email='theherk@gmail.com',
     classifiers=[
