@@ -3,7 +3,7 @@ TheHerk Menu Icons
 
 TheHerk Menu Icons is a django CMS navigation modifier that allows attaching icons to menu nodes. These icons can be: a link to an external icon resource, an uploaded icon image file, or by using a class to call a Font Awesome icon.
 
-*note* - If you use this on a Django-cms version prior to 2.4, you will have to modify the menu modifier queryset. It required the most bologna hack ever because of the new oddly behaved double publishing system.
+Due to a dramatic change in the process for modifying the page model in django CMS, TheHerk Menu Icons v1.3 will be the last version that supports less than django CMS v3.
 
 Usage
 -----
