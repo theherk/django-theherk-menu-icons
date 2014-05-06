@@ -25,15 +25,14 @@ class MenuIconsMod(Modifier):
                     # Load Menu Icons into template tags
                     # Workaround due to the double publishing feature added in 2.4.
                     # menu icons refers to page marked as "publisher_is_draft"
-                    
-                    node_page = Page.objects.get( id = node.id )
+                    node_page = Page.objects.get(id = node.id)
                     draft_page_id = node_page.id if node_page.publisher_is_draft else node_page.publisher_public_id
                     menu_icons = MenuIcon.objects.get( page = draft_page_id )
                 else:
                     menu_icons = MenuIcon.objects.get(page=(node.id))
-                node.menu_icon_image = menu_icons.menu_icon_image
-                node.menu_icon_url = menu_icons.menu_icon_url
-                node.menu_icon_font_awesome = menu_icons.menu_icon_font_awesome
+                    node.menu_icon_image = menu_icons.menu_icon_image
+                    node.menu_icon_url = menu_icons.menu_icon_url
+                    node.menu_icon_font_awesome = menu_icons.menu_icon_font_awesome
             except:
                 pass
 
