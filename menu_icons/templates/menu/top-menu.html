@@ -1,0 +1,29 @@
+{% load cms_tags menu_tags %}
+
+{% for child in children %}
+<li class="divider"></li>
+<li class="{% if child.is_leaf_node %}{% else %}has-dropdown {% endif %}">
+{% if child.is_leaf_node %}<a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+    {% if child.menu_icon_image %}<img src="{{ MEDIA_URL }}{{ child.menu_icon_image }}">
+    {% elif child.menu_icon_url %}<img src="{{ child.menu_icon_url }}">
+    {% elif child.menu_icon_font_awesome %}<i class="fa margin-right fa-fw {{ child.menu_icon_font_awesome }}"></i>
+    {% else %}
+        {% if child.menu_level != 0 %}<i class="fa margin-right fa-fw"></i>{% endif %}
+    {% endif %}
+{{ child.get_menu_title }}</a>
+{% else %}
+<a href="#">
+    {% if child.menu_icon_image %}<img src="{{ MEDIA_URL }}{{ child.menu_icon_image }}">
+    {% elif child.menu_icon_url %}<img src="{{ child.menu_icon_url }}">
+    {% elif child.menu_icon_font_awesome %}<i class="fa margin-right fa-fw {{ child.menu_icon_font_awesome }}"></i>
+    {% else %}{% if child.menu_level != 0 %}<i class="fa margin-right fa-fw"></i>{% endif %}
+    {% endif %}{{ child.get_menu_title }}</a>
+{% endif %}
+  {% if child.children %}
+    <ul class="dropdown">
+        {% show_menu 0 100 100 100 "menu/top-menu.html" "" "" child %}
+    </ul>
+  {% endif %}
+</li>
+{% endfor %}
+
