@@ -7,17 +7,17 @@ def read(fname):
 
 setup(
     name='django-theherk-menu-icons',
-    version='1.3',
+    version='2.0.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'django-cms >= 2.4.1, < 3',
+        'django-cms >= 3',
     ],
     license='see file LICENSE',
     description='Django CMS navigation modifier to attach icons to menus.',
     long_description=read('README.md'),
     url='https://github.com/theherk/django-theherk-menu-icons',
-    download_url='https://github.com/theherk/django-theherk-menu-icons/archive/v1.3.zip',
+    download_url='https://github.com/theherk/django-theherk-menu-icons/archive/v2.0.0.zip',
     author='Adam Sherwood',
     author_email='theherk@gmail.com',
     classifiers=[
@@ -26,8 +26,8 @@ setup(
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
