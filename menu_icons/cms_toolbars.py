@@ -26,7 +26,6 @@ class MenuIconToolbar(CMSToolbar):
             has_global_current_page_change_permission =  user_can_change_page(self.request.user, page=self.page) 
         else:
             has_global_current_page_change_permission = False
-            print(has_global_current_page_change_permission)
 
         # check if user has page edit permission
         can_change = self.request.current_page and user_can_change_page(self.request.user, page=self.page)
@@ -34,7 +33,6 @@ class MenuIconToolbar(CMSToolbar):
         if has_global_current_page_change_permission or can_change:
             try:
                 menu_icons = MenuIcon.objects.get(extended_object_id=self.page.id)
-                print(menu_icons)
             except MenuIcon.DoesNotExist:
                 menu_icons = None
             try:
