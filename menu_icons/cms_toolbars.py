@@ -48,5 +48,5 @@ class MenuIconToolbar(CMSToolbar):
 
             not_edit_mode = not self.toolbar.edit_mode
             current_page_menu = self.toolbar.get_or_create_menu('page')
-            current_page_menu.add_modal_item('menu-icon', _('Menu Icon'), url=url, disabled=not_edit_mode, position=0)
+            current_page_menu.add_modal_item _('Menu Icon'), url=url, disabled=not_edit_mode, position=0)
 
