@@ -14,7 +14,7 @@ class MenuIconToolbar(CMSToolbar):
 
     def populate(self):
         # always use draft if we have a page
-        self.page = get_page_draft(self.request.current_page)      
+        self.page = get_page_draft(self.request.current_page)
 
         if not self.page:
             # Nothing to do
@@ -22,7 +22,7 @@ class MenuIconToolbar(CMSToolbar):
 
         # check global permissions if CMS_PERMISSIONS is active
         if get_cms_setting('PERMISSION'):
-            has_global_current_page_change_permission =  user_can_change_page(self.request.user, page=self.page) 
+            has_global_current_page_change_permission =  user_can_change_page(self.request.user, page=self.page)
         else:
             has_global_current_page_change_permission = False
 
@@ -45,5 +45,5 @@ class MenuIconToolbar(CMSToolbar):
 
             not_edit_mode = not self.toolbar.edit_mode
             current_page_menu = self.toolbar.get_or_create_menu('page')
-            current_page_menu.add_modal_item (_('Menu Icon'), url=url, disabled=not_edit_mode, position=0)
+            current_page_menu.add_modal_item(_('Menu Icon'), url=url, disabled=not_edit_mode, position=0)
 
