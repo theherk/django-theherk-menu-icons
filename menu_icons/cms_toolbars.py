@@ -1,7 +1,7 @@
 from cms.api import get_page_draft
 from cms.toolbar_pool import toolbar_pool
 from cms.toolbar_base import CMSToolbar
-from cms.utils import get_cms_setting
+from cms.utils.conf import get_cms_setting
 from cms.utils.page_permissions import user_can_change_page
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse, NoReverseMatch
